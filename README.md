@@ -35,7 +35,9 @@ alias dcon='docker-compose start'	         # start container(s) [Name]
 alias dcof='docker-compose stop'	         # start all containers
 alias dcps='docker-compose ps'	           # list docker-compose services
 alias dcl='docker-compose logs'            # list service logs w/ tail -f
+```
  docker-machine aliases ################################################
+```
 alias dm='docker-machine'                  # docker-machine binary
 alias dma='docker-machine active'          # list machines (active)
 alias dmas='machine_set_active'            # set active machine; opt [mach_name]
