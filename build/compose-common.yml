@@ -1,0 +1,94 @@
+###########################################################
+#  filename: compose-common.yml                           #
+#  path:     ~/src/deploy/localhost/docker/build/                                 #
+#  version:  1.0                                          #
+#  date:     09/25/2015                                   #
+#  purpose:  define and run multi-container apps          #
+#  usage:                                                 #
+#  notes:                                                 #
+#  author:   DevOpsEtc @ https://github.com/DevOpsEtc   #
+###########################################################
+
+# Nginx Web Service
+web:
+  container_name: web
+  build: nginx
+  ports:
+    # host published port for osx host only access; kill @stage/live
+    - "192.168.99.100:80:80"
+    # - "192.168.99.100:443:443"
+  volumes:
+    - /src/nginx/conf.d:/etc/nginx/conf.d
+    - /src/nginx/www:/var/www
+  links:
+    - php
+  restart: always
+
+# PHP Scripting/FastCGI Process Manager Service
+php:
+  container_name: php
+  build: php-fpm
+  ports:
+    # host published port for email sending; kill @stage/live
+    - "192.168.99.100:587:587"
+  volumes:
+    - /src/nginx/www:/var/www
+    - /etc/mysql/conf.d
+    # - /src/mariadb/conf:/etc/mysql/conf.d
+  env_file:
+    - 'php-fpm/env.dev'
+  restart: always
+
+# MariaDB Database Service
+db:
+  container_name: db
+  build: mariadb
+  ports:
+    # host published port for mysql client access; kill @stage/prod
+    - "192.168.99.100:3306:3306"
+  volumes:
+    - /src/mariadb/data:/var/lib/mysql
+    - /src/mariadb/logs:/var/log/mysql
+  env_file:
+    - 'mariadb/env.dev'
+  restart: always
+
+# Composer, Git, Drush, Htop,
+tools:
+  container_name: tools
+  build: tools
+  volumes:
+    - /src/tools/drush:/etc/drush/
+    - /src/nginx/www:/var/www
+  # links:
+    # - db
+  env_file:
+    - 'tools/env.dev'
+  restart: always
+
+# test:
+  # container_name: test
+  # build: test
+  # volumes:
+    # - /src/tools/drush:/etc/drush/
+    # - /src/nginx/www:/var/www
+  # links:
+    # - db
+  # env_file:
+    # - 'test/env.dev'
+  # restart: always
+
+# Data Volume Service (persistant storage; bind-mounted to host)
+# data:
+  # container_name: data
+  # image: debian:jessie
+  # image: busybox
+  # volumes:
+    # - /src/nginx/cache:/var/cache/nginx
+    # - /src/nginx/sites:/etc/nginx/sites
+    # - /src/nginx/www:/var/www
+    # - /src/nginx/logs:/var/log/nginx
+    # - /src/mariadb/conf:/etc/mysql/conf.d
+    # - /src/mariadb/data:/var/lib/mysql
+    # - /src/mariadb/logs:/var/log/mysql
+    # - /src/tools:/var/tools

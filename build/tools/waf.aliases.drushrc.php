@@ -1,0 +1,8 @@
+<?php
+$aliases['???.dev'] = array (
+  'remote-host' => '????.dev',
+  'remote-user' => '??',
+  'root' => '/var/www/????.dev/public',
+  'uri' => 'http://???.dev',
+);
+?>

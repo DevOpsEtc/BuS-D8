@@ -1,0 +1,35 @@
+---
+
+###########################################################
+#  filename: wab.make.yml                                 #
+/Users/gp/src/config/provision/docker/build/test/Dockerfile
+#  path:     ~/src/deploy/localhost/docker/build/tools/drush/         #
+#  version:  1.0                                          #
+#  date:     09/16/2015                                   #
+#  purpose:  Drush make file to install & config Drupal   #
+#  usage:                                                 #
+#  notes:                                                 #
+#  author:   gp                                           #
+###########################################################
+core: 8.x
+api: 2
+
+projects:
+  # Drupal core @ https://www.drupal.org/node/3060/release
+  drupal:
+    type: core
+    version: 8.0.0-beta15
+    # patch:
+      # - "http://drupal.org/files/issues/admin_menu.long_.31.patch"
+
+  # contrib
+  admin_toolbar: 1.7
+    # patch:
+      # rfc-fixes:
+        # url: "http://drupal.org/files/issues/cal-760316-rfc-fixes-2.diff"
+        # md5: "e4876228f449cb0c37ffa0f2142"
+  # adminrole:
+    # shorthand syntax if no md5 checksum is specified
+    # patch:
+      # - "http://drupal.org/files/issues/adminrole_exceptions.patch"
+      # - "http://drupal.org/files/issues/adminrole-213212-01.patch"

@@ -1,0 +1,70 @@
+sed
+sudo tee or just copy? or sed
+# set website uri for drush commands, e.g. one-time login links
+$options['uri'] = "http://DevOpsEtc.dev";
+
+# set drupal core base directory
+$options['r'] = '/var/www/waf.dev/public';
+
+consider entrypoint script for drush make & drupal install & config & residual commands
+
+# path/filename for 'sql-dump' output
+$options['result-file'] = '/path/to/backup/dir/@DATABASE_@DATE.sql'
+// Notify user via Notification Center (OSX) or libnotify (Linux) when command
+// takes more than 30 seconds. See global options for more configuration.
+# $options['notify'] = 30;
+// Show database passwords in 'status' and 'sql-conf' commands.
+# $options['show-passwords'] = 1;
+/**
+ * Specify the logging level for PHP notices.  Defaults to "notice".  Set to
+ * "warning" when doing Drush development.  Also make sure that error_reporting
+ * is set to E_ALL in your php configuration file.  See `drush status` for the
+ * path to your php.ini file.
+ */
+# $options['php-notices'] = 'warning';
+
+ * Specify options to pass to ssh in backend invoke.  The default is to prohibit
+ * password authentication, and is included here, so you may add additional
+ * parameters without losing the default configuration.
+ */
+# $options['ssh-options'] = '-o PasswordAuthentication=no';
+
+/**
+ * An explicit list of tables which should be included in sql-dump and sql-sync.
+ */
+# $options['tables']['common'] = array('user', 'permissions', 'role_permission', 'role');
+
+/**
+ * List of tables whose *data* is skipped by the 'sql-dump' and 'sql-sync'
+ * commands when the "--structure-tables-key=common" option is provided.
+ * You may add specific tables to the existing array or add a new element.
+ */
+# $options['structure-tables']['common'] = array('cache', 'cache_*', 'history', 'search_*', 'sessions', 'watchdog');
+
+/**
+ * List of tables to be omitted entirely from SQL dumps made by the 'sql-dump'
+ * and 'sql-sync' commands when the "--skip-tables-key=common" option is
+ * provided on the command line.  This is useful if your database contains
+ * non-Drupal tables used by some other application or during a migration for
+ * example.  You may add new tables to the existing array or add a new element.
+ */
+# $options['skip-tables']['common'] = array('migration_*');
+
+/ Ensure all rsync commands use verbose output.
+# $command_specific['rsync'] = array('verbose' => TRUE);
+
+// Prevent drush ssh command from adding a cd to Drupal root before provided command.
+# $command_specific['ssh'] = array('cd' => FALSE);
+
+// Always show release notes when running pm-update or pm-updatecode.
+# $command_specific['pm-update'] = array('notes' => TRUE);
+# $command_specific['pm-updatecode'] = array('notes' => TRUE);
+
+/**
+ * Specify the folders to search for Drush alias files (*.alias.drushrc.php and
+ * *.aliases.drushrc.php).  These values are always merged with alias paths
+ *  defined on the command line or in other configuration files.  On the command
+ * line, paths may be separated by a colon (:) on Unix-based systems or a
+ * semi-colon (;) on Windows.
+ */
+# $options['alias-path'] = array('/path/to/aliases','/path2/to/more/aliases');
