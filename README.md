@@ -4,7 +4,7 @@
 
 Deployment project that stands up a local containerized LEMP stack with a matching one on AWS. Also a management tool providing canned AWS, OS and Drupal/Drush commands that can be run locally and remotely. Built with Bash, Docker, Docker Compose, Docker Machine, Nginx, PHP-FPM, MariaDB and Drupal.
 
-## docker aliases ########################################################
+### docker aliases ########################################################
 ```
 alias d='docker'                           # docker binary
 alias dx='docker exec -it'                 # run command on container [name]
@@ -25,7 +25,7 @@ alias drmc='docker kill $(docker ps -aq) && docker rm $(docker ps -aq)'
 alias dnuke='docker_rm_atomic'             # stop/delete all containers/images
 ```
 
-## docker-compose aliases ################################################
+### docker-compose aliases ################################################
 ```
 alias dc='docker-compose'                  # docker-compose binary
 alias dcup='docker-compose up -d'          # build services & run containers
@@ -36,7 +36,7 @@ alias dcof='docker-compose stop'	         # start all containers
 alias dcps='docker-compose ps'	           # list docker-compose services
 alias dcl='docker-compose logs'            # list service logs w/ tail -f
 ```
- docker-machine aliases ################################################
+### docker-machine aliases ################################################
 ```
 alias dm='docker-machine'                  # docker-machine binary
 alias dma='docker-machine active'          # list machines (active)
@@ -51,7 +51,8 @@ alias dmof='machine_stop'                  # restart machine; opt [mach_name]
 ```
 
 ## vagrant aliases #######################################################
-``` silence & push to bg; ssh to vm
+```
+silence & push to bg; ssh to vm
 alias vuwaf='gwaf && vagrant rsync-back > /dev/null && vagrant rsync-auto > /dev/null & ssh waf && fg'
 rsync host to guest
 alias synca='vagrant rsync-auto > /dev/null && fg'
