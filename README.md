@@ -11,7 +11,7 @@ alias dx='docker exec -it'                 # run command on container [name]
 alias dl='docker logs'                     # list container log [name] [-f]
 alias dps='docker ps'                      # list containers (running)
 alias dpsa='docker ps -a | grep Exited'    # list containers (exited)
-alias dpsq='docker ps -q' 				         # list container IDs (running)
+alias dpsq='docker ps -q'                  # list container IDs (running)
 alias dpsaq='docker ps -aq'                # list container IDs (all)
 alias drel='docker_releases.sh'            # download latest docker releases
 alias dst='docker stats $(docker ps -q)'   # container memory/cpu usage
@@ -29,11 +29,11 @@ alias dnuke='docker_rm_atomic'             # stop/delete all containers/images
 ```
 alias dc='docker-compose'                  # docker-compose binary
 alias dcup='docker-compose up -d'          # build services & run containers
-alias dcb='docker-compose build'		       # (re)build service image [Name]
-alias dcr='docker-compose restart'	       # restart all containers
-alias dcon='docker-compose start'	         # start container(s) [Name]
-alias dcof='docker-compose stop'	         # start all containers
-alias dcps='docker-compose ps'	           # list docker-compose services
+alias dcb='docker-compose build'           # (re)build service image [Name]
+alias dcr='docker-compose restart'         # restart all containers
+alias dcon='docker-compose start'          # start container(s) [Name]
+alias dcof='docker-compose stop'           # start all containers
+alias dcps='docker-compose ps'             # list docker-compose services
 alias dcl='docker-compose logs'            # list service logs w/ tail -f
 ```
 ### docker-machine aliases ################################################
@@ -43,7 +43,7 @@ alias dma='docker-machine active'          # list machines (active)
 alias dmas='machine_set_active'            # set active machine; opt [mach_name]
 alias dmgo='machine_go'                    # ssh into machine; opt [mach_name]
 alias dmip='machine_get_ip'                # get machine ip; opt [mach_name]
-alias dmls='docker-machine ls'			       # list machines (all)
+alias dmls='docker-machine ls'             # list machines (all)
 alias dmrm='docker-machine rm'             # remove machine; opt [mach_name]
 alias dmr='machine_restart'                # restart machine; opt [mach_name]
 alias dmon='machine_start'                 # restart machine; opt [mach_name]
