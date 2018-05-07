@@ -50,7 +50,7 @@ alias dmon='machine_start'                 # restart machine; opt [mach_name]
 alias dmof='machine_stop'                  # restart machine; opt [mach_name]
 ```
 
-## vagrant aliases #######################################################
+### vagrant aliases #######################################################
 ```
 silence & push to bg; ssh to vm
 alias vuwaf='gwaf && vagrant rsync-back > /dev/null && vagrant rsync-auto > /dev/null & ssh waf && fg'
